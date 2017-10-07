@@ -8,8 +8,8 @@ class FlightController extends Application {
 
 	public function index() {
 		$this->load->model('Flights');
-		$data['data'] = $this->Flights->all();
+		$data = $this->Flights->all();
 		$this->load->view('FlightView', $data);
 	}
 }
-?>
+?>	

@@ -1,9 +1,10 @@
 <div class="row">
 	<table>
-		<?php foreach($data as $airplaneObj): ?>
+		<!-- you can use here airplanes and airplines which are the array of objects -->
+		<!-- <?php foreach($airplanes as $airplaneObj): ?>
 				<ul>
-					<a href="/FleetController/show/{key}"><?php echo $airplaneObj->id; ?></a>
+					<a href="/FleetController/show/{key}"><?php print_r(array_values($airplaneObj)); ?></a>
 				</ul>
-		<?php endforeach; ?>
+		<?php endforeach; ?> -->
 	</table>
 </div>

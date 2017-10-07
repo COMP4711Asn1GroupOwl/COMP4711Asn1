@@ -8,7 +8,7 @@ class FleetController extends Application {
 
 	public function index() {
 		$this->load->model('Fleet');
-		$data['data'] = $this->Fleet->all();
+		$data = $this->Fleet->all();
 		$this->load->view('FleetView', $data);
 	}
 }

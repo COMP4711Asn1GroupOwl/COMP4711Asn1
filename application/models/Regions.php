@@ -1,6 +1,6 @@
 <?php
 
-class Planes extends CI_Model
+class Regions extends CI_Model
 {
 	var $data;
 
@@ -9,8 +9,8 @@ class Planes extends CI_Model
 	{
 		parent::__construct();
 
-		$jsonAirplanes = file_get_contents('http://wacky.jlparry.com/info/airplanes');	
-		$this->data['planes'] = json_decode($jsonAirplanes);
+		$jsonAirplanes = file_get_contents('http://wacky.jlparry.com/info/regions');	
+		$this->data['regions'] = json_decode($jsonAirplanes);
 
 		foreach ($this->data as $key => $record)
 		{

@@ -3,26 +3,22 @@
 class Fleet extends CI_Model
 {
 	var $data;
+	var $airplanes;
+	var $airlines;
 
 	// Constructor
 	public function __construct()
 	{
 		parent::__construct();
 
-		$jsonAirplanes = file_get_contents('http://wacky.jlparry.com/info/airplanes');	
-		$this->data = json_decode($jsonAirplanes);
-
-		foreach ($this->data as $key => $record)
-		{
-			$record->key = $key;
-			$this->data[$key] = $record;
-		}
-	}
-
-	// retrieve a single quote, null if not found
-	public function get($which)
-	{
-		return !isset($this->data[$which]) ? null : $this->data[$which];
+		//assign models to each variable
+		$this->load->model("Airlines");
+		$this->load->model("Planes");
+		$this->airlines = $this->Airlines->all();
+		$this->airplanes = $this->Planes->all();
+		//data is array of models has planes and airlines which are an array of stdObjects 
+		$this->data["airplanes"] = $this->airplanes;
+		$this->data["airlines"] = $this->airlines;	
 	}
 
 	// retrieve all of the quotes

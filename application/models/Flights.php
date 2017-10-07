@@ -2,26 +2,25 @@
 class Flights extends CI_Model
 {
 	var $data;
+	var $regions;
+	var $airports;
 
 	// Constructor
 	public function __construct()
 	{
 		parent::__construct();
-		$jsonAirlines = file_get_contents('http://wacky.jlparry.com/info/airlines');	
-		$this->data = json_decode($jsonAirlines);
-		foreach ($this->data as $key => $record)
-		{
-			$record->key = $key;
-			$this->data[$key] = $record;
-		}
-	}
+		
+		//assign models to each variable
+		$this->load->model('Regions');
+		$this->load->model('Airports');
+		$this->regions = $this->Regions->all();
+		$this->airports = $this->Airports->all();
 
-	// retrieve a single quote, null if not found
-	public function get($which)
-	{
-		return !isset($this->data[$which]) ? null : $this->data[$which];
+		//data is array of models has planes and airlines which are an array of stdObjects 
+		$this->data['regions'] = $this->regions;
+		$this->data['airports'] = $this->airports;
 	}
-
+	
 	// retrieve all of the quotes
 	public function all()
 	{
