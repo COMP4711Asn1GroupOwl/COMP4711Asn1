@@ -1,0 +1,89 @@
+#Change Log
+
+Team membership:  Ebon(Captain) &  Andrew(Crew)  & Michael(Crew) & Gisu(Crew) & F(Crew)
+
+----------------------------
+## *Version 1.0.6*
+
+Release Date: 10/8/2017
+
+## Updated Components
+- models/Fleet.php -> Fleets.php (E, A)
+- controllers/FleetController.php -> controllers/info/Fleet.php (E, A)
+- controllers/FlightController.php -> controllers/info/Flight.php (E, A)
+- views/FleetView.php -> fleet.php (E, A)
+- views/FlightView.php -> flight.php (E, A)
+- views/airplaneDetail.php -> airplane.php (E, A)
+- updated related paths
+
+----------------------------
+## *Version 1.0.5*
+
+Release Date: 10/8/2017
+
+## Updated Components
+- controllers/Welcome.php (A)
+- views/FleetView.php (A)
+- views/homepage.php (A)
+- changelog (A)
+
+----------------------------
+## *Version 1.0.4*
+
+Release Date: 10/8/2017
+
+## Updated Components
+- controllers/FlightController.php (E)
+- views/FlightView.php (E)
+- changelog (E)
+
+----------------------------
+## *Version 1.0.3*
+
+Release Date: 10/8/2017
+
+## Removed Components
+- views/regionDetail.php(E)
+
+## Updated Components
+- models/Flights.php
+- changelog (E)
+
+----------------------------
+## *Version 1.0.2*
+
+Release Date: 10/7/2017
+
+## New Components
+- models/Regions.php
+- models/Flights.php
+- controllers/FlightController.php (E)
+- views/flightView.php(E)
+- views/regionDetail.php(E)
+
+## Updated Components
+- changelog (E)
+
+----------------------------
+## *Version 1.0.1*
+
+Release Date: 10/7/2017
+
+## New Components
+- controllers/About.php (F)
+- views/about.php(F)
+
+## Updated Components
+- config.php (F)
+
+----------------------------
+## *Version 1.0.0*
+
+Release Date: 10/05/2017
+
+## New Components
+
+
+## Updated Components
+
+- team members added and defined (Ebon)
