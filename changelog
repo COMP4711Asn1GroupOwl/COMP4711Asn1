@@ -1,0 +1,41 @@
+#Change Log
+
+Team membership:  Ebon(Captain) &  Andrew(Crew)  & Michael(Crew) & Gisu(Crew) & F(Crew)
+----------------------------
+## *Version 1.0.2*
+
+Release Date: 10/7/2017
+
+## New Components
+- models/Regions.php
+- models/Flights.php
+- controllers/FlightController.php (E)
+- views/flightView.php(E)
+- views/regionDetail.php(E)
+
+## Updated Components
+- changelog (E)
+
+----------------------------
+## *Version 1.0.1*
+
+Release Date: 10/7/2017
+
+## New Components
+- controllers/About.php (F)
+- views/about.php(F)
+
+## Updated Components
+- config.php (F)
+
+----------------------------
+## *Version 1.0.0*
+
+Release Date: 10/05/2017
+
+## New Components
+
+
+## Updated Components
+
+- team members added and defined (Ebon)

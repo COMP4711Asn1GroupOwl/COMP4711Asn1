@@ -1,14 +1,24 @@
 <div class="row">
-	{regions}
-	<div class="span4">
-		
-		<h1>
-			{id}
-		</h1>
-		<p>
-			{name}
-		</p>
+	<div>
+		<div class="span4">
+			<h3>
+				Regions
+			</h3>
+			{regions}
+			<p>
+				{name}
+			</p>
+			{/regions}
+		</div>
+	    <div class="span4">
+	    	<h3>
+				Airlines
+			</h3>
+	    	{airlines}
+			<p>
+				{id}
+			</p>
+			{/airlines}
+		</div>
 	</div>
-    {/regions}
-    <br/>
 </div>
