@@ -11,6 +11,12 @@ class Airlines extends CI_Model
 
 		$jsonAirlines = file_get_contents('http://wacky.jlparry.com/info/airlines');	
 		$this->data = json_decode($jsonAirlines, true);
+
+		foreach ($this->data as $key => $record)
+		{
+			$record['key'] = $key;
+			$this->data[$key] = $record;
+		}
 	}
 
 	// retrieve a single quote, null if not found

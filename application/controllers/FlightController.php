@@ -1,6 +1,5 @@
 
 <?php 
-
 class FlightController extends Application {	
 	var $owl;
 	var $dests;
