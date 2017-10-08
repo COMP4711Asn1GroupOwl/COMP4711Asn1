@@ -1,0 +1,25 @@
+#Change Log
+
+Team membership:  Ebon(Captain) &  Andrew(Crew)  & Michael(Crew) & Gisu(Crew) & F(Crew)
+
+## *Version 1.0.0*
+
+Release Date: 10/XX/2017 // pls change date
+
+## New Components
+
+
+## Updated Components
+
+- team members added and defined (Ebon)
+
+## *Version 1.0.X* // pls track version and put. thanks. -F
+
+Release Date: 10/7/2017
+
+## New Components
+- controllers/About.php (F)
+- views/about.php(F)
+
+## Updated Components
+- config.php (F)
