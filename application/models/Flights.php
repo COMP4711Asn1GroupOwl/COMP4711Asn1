@@ -26,4 +26,19 @@ class Flights extends CI_Model
 	{
 		return $this->data;
 	}
+
+	public function showRegion($key)
+	{
+		// this is the view we want shown
+		$this->data['pagebody'] = 'regionDetail';
+
+		// build the list of authors, to pass on to our view
+		$this->load->model('regions');
+		$source = $this->regions->get($key);
+		var_dump($source);
+		// pass on the data to present, adding the author record's fields
+		$this->data = array_merge($this->data, (array) $source);
+
+		$this->render();
+	}
 }

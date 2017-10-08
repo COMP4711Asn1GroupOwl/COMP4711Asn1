@@ -17,6 +17,7 @@ class Airlines extends CI_Model
 			$record['key'] = $key;
 			$this->data[$key] = $record;
 		}
+		$this->data['airlines'] = json_decode($jsonAirlines, true);
 	}
 
 	// retrieve a single quote, null if not found
@@ -28,7 +29,7 @@ class Airlines extends CI_Model
 	// retrieve all of the quotes
 	public function all()
 	{
-		return $this->data;
+		return $this->data['airlines'];
 	}
 
 }
