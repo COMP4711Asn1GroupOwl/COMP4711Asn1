@@ -1,24 +1,21 @@
 <div class="row">
-	<div>
-		<div class="span4">
-			<h3>
-				Regions
-			</h3>
-			{regions}
-			<p>
-				{name}
-			</p>
-			{/regions}
-		</div>
-	    <div class="span4">
-	    	<h3>
-				Airlines
-			</h3>
-	    	{airlines}
-			<p>
-				{id}
-			</p>
-			{/airlines}
-		</div>
-	</div>
+	<table style="width:100%">
+		<tr>
+			<td><b>Flight</b></td>
+		    <td><b>Airline</b></td> 
+		    <td><b>To</b></td>
+		    <td><b>Terminal</b></td>
+		    <td><b>Community</b></td>
+		</tr>
+
+		{schedules}
+		<tr>
+			<td>{planeCode}</td>
+		    <td>Owl</td>
+		    <td>{dest}</td>
+		    <td>Main</td>
+		    <td>{community}</td>
+		</tr>
+		{/schedules}
+	</table>
 </div>
