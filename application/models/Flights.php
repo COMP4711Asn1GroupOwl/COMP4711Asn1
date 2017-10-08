@@ -3,7 +3,7 @@ class Flights extends CI_Model
 {
 	var $data = array();
 	var $regions;
-	var $airports;
+	var $airlines;
 
 	// Constructor
 	public function __construct()
@@ -12,13 +12,13 @@ class Flights extends CI_Model
 		
 		//assign models to each variable
 		$this->load->model('Regions');
-		$this->load->model('Airports');
+		$this->load->model('Airlines');
 		$this->regions = $this->Regions->all();
-		$this->airports = $this->Airports->all();
+		$this->airlines = $this->Airlines->all();
 
 		//data is array of models has planes and airlines which are an array of stdObjects 
 		$this->data['regions'] = $this->regions;
-		$this->data['airports'] = $this->airports;
+		$this->data['airlines'] = $this->airlines;
 	}
 	
 	// retrieve all of the quotes

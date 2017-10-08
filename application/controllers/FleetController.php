@@ -1,4 +1,3 @@
-
 <?php 
 
 class FleetController extends Application {	
@@ -8,8 +7,10 @@ class FleetController extends Application {
 
 	public function index() {
 		$this->load->model('Fleet');
-		$data = $this->Fleet->all();
-		$this->load->view('FleetView', $data);
+                $this->data = $this->Fleet->all();
+		$this->data['pagebody'] = 'airplaneDetail';
+		$this->data['pagetitle'] = 'Fleet';
+		$this->render();
 	}
 }
 ?>

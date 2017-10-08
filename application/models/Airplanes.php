@@ -1,6 +1,6 @@
 <?php
 
-class Planes extends CI_Model
+class Airplanes extends CI_Model
 {
 	var $data;
 
@@ -10,8 +10,9 @@ class Planes extends CI_Model
 		parent::__construct();
 
 		$jsonAirplanes = file_get_contents('http://wacky.jlparry.com/info/airplanes');	
-		$this->data['planes'] = json_decode($jsonAirplanes);
-
+		$this->data = json_decode($jsonAirplanes, true);
+                
+		// inject each "record" key into the record itself, for ease of presentation
 		foreach ($this->data as $key => $record)
 		{
 			$record['key'] = $key;
