@@ -3,7 +3,7 @@ class Flights extends CI_Model
 {
 	var $data = array();
 	var $regions;
-	var $airports;
+	var $airlines;
 
 	// Constructor
 	public function __construct()

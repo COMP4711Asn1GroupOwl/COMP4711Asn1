@@ -1,10 +1,15 @@
 <div class="row">
-	<table>
-		<!-- you can use here airplanes and airplines which are the array of objects -->
-		<!-- <?php foreach($airplanes as $airplaneObj): ?>
-				<ul>
-					<a href="/FleetController/show/{key}"><?php print_r(array_values($airplaneObj)); ?></a>
-				</ul>
-		<?php endforeach; ?> -->
-	</table>
+	<div class="span4">
+		
+            <h1>
+                Model {model} 
+            </h1>
+            <p>Manufacturer {manufacturer} </p>
+            <p>Seats: {seats} </p>
+            <p>Reach: {reach} </p>
+            <p>Cruise: {cruise} </p>
+            <p>Takeoff: {takeoff} </p>
+            <p>Hourly: {hourly} </p>
+	</div>
+    <br/>
 </div>
