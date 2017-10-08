@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="span4">
 		
-            <h1>
+            <h3>
                 Model {model} 
-            </h1>
+            </h3>
             <p>Manufacturer {manufacturer} </p>
             <p>Seats: {seats} </p>
             <p>Reach: {reach} </p>
