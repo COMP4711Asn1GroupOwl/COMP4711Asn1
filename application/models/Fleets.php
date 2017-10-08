@@ -1,6 +1,6 @@
 <?php
 
-class Fleet extends CI_Model
+class Fleets extends CI_Model
 {
 	var $data;
 	var $airplanes;

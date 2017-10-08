@@ -2,7 +2,7 @@
     {airplanes}
 	<div class="span4"
 		<h1>
-                    <a href="/FleetController/show/{key}" >{model}</a>
+                    <a href="/info/Fleet/show/{key}" >{model}</a>
 		</h1>
 	</div>
     {/airplanes}
