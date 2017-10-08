@@ -11,6 +11,7 @@ class FleetController extends Application {
 		$this->data['pagebody'] = 'airplaneDetail';
 		$this->data['pagetitle'] = 'Fleet';
 		$this->render();
+                
 	}
 }
 ?>
