@@ -1,7 +1,7 @@
 <?php
 class Flights extends CI_Model
 {
-	var $data;
+	var $data = array();
 	var $regions;
 	var $airports;
 
@@ -26,5 +26,4 @@ class Flights extends CI_Model
 	{
 		return $this->data;
 	}
-
 }

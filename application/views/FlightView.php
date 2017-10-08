@@ -1,5 +1,14 @@
 <div class="row">
-	<h1>
-		Andrew, you should work from here
-	</h1>
+	{regions}
+	<div class="span4">
+		
+		<h1>
+			{id}
+		</h1>
+		<p>
+			{name}
+		</p>
+	</div>
+    {/regions}
+    <br/>
 </div>
