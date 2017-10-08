@@ -2,8 +2,9 @@
 class Flights extends CI_Model
 {
 	var $data = array();
-	var $regions;
 	var $airlines;
+	var $airports;
+	var $airplanes;
 
 	// Constructor
 	public function __construct()
@@ -15,8 +16,8 @@ class Flights extends CI_Model
 		$this->load->model('Airports');
 		$this->load->model('Airplanes');
 		$this->airlines = $this->Airlines->all();
-		$this->airlines = $this->Airports->all();
-		$this->airlines = $this->Airplanes->all();
+		$this->airports = $this->Airports->all();
+		$this->airplanes = $this->Airplanes->all();
 
 		//data is array of models has planes and airlines which are an array of stdObjects 
 		$this->data['airlines'] = $this->airlines;

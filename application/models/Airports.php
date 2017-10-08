@@ -11,7 +11,11 @@ class Airports extends CI_Model
 
 		$jsonAirports = file_get_contents('http://wacky.jlparry.com/info/airports');	
 		$this->data = json_decode($jsonAirports, true);
-
+		foreach ($this->data as $key => $record)
+		{
+			$record['key'] = $key;
+			$this->data[$key] = $record;
+		}
 	}
 
 	// retrieve a single quote, null if not found
