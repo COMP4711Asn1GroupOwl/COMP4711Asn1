@@ -8,8 +8,11 @@ class FlightController extends Application {
 
 	public function index() {
 		$this->load->model('Flights');
-		$data = $this->Flights->all();
-		$this->load->view('FlightView', $data);
+		$this->data = $this->Flights->all();
+		$this->data['pagebody'] = 'FlightView';
+		$this->data['pagetitle'] = 'Flights';
+		$this->render();
+		// $this->load->view('FlightView', $data);
 	}
 }
 ?>	

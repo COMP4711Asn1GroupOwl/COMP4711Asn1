@@ -10,13 +10,8 @@ class Regions extends CI_Model
 		parent::__construct();
 
 		$jsonAirplanes = file_get_contents('http://wacky.jlparry.com/info/regions');	
-		$this->data['regions'] = json_decode($jsonAirplanes);
+		$this->data['regions'] = json_decode($jsonAirplanes, true);
 
-		foreach ($this->data as $key => $record)
-		{
-			$record['key'] = $key;
-			$this->data[$key] = $record;
-		}
 	}
 
 	// retrieve a single quote, null if not found
@@ -28,7 +23,7 @@ class Regions extends CI_Model
 	// retrieve all of the quotes
 	public function all()
 	{
-		return $this->data;
+		return $this->data['regions'];
 	}
 
 }
