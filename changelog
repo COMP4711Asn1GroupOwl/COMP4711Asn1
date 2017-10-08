@@ -3,6 +3,16 @@
 Team membership:  Ebon(Captain) &  Andrew(Crew)  & Michael(Crew) & Gisu(Crew) & F(Crew)
 
 ----------------------------
+## *Version 1.0.4*
+
+Release Date: 10/8/2017
+
+## Updated Components
+- controllers/FlightController.php (E)
+- views/FlightView.php (E)
+- changelog (E)
+
+----------------------------
 ## *Version 1.0.3*
 
 Release Date: 10/8/2017
