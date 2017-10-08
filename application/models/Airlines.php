@@ -17,6 +17,7 @@ class Airlines extends CI_Model
 			$record['key'] = $key;
 			$this->data[$key] = $record;
 		}
+
 		$this->data['airlines'] = json_decode($jsonAirlines, true);
 	}
 
