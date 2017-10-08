@@ -10,7 +10,7 @@ class Airlines extends CI_Model
 		parent::__construct();
 
 		$jsonAirlines = file_get_contents('http://wacky.jlparry.com/info/airlines');	
-		$this->data['airlines'] = json_decode($jsonAirlines, true);
+		$this->data = json_decode($jsonAirlines, true);
 	}
 
 	// retrieve a single quote, null if not found
@@ -22,7 +22,7 @@ class Airlines extends CI_Model
 	// retrieve all of the quotes
 	public function all()
 	{
-		return $this->data['airlines'];
+		return $this->data;
 	}
 
 }
