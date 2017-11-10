@@ -12,10 +12,10 @@ class Fleets extends CI_Model
 		parent::__construct();
 
 		//assign models to each variable
-		$this->load->model("Airports");
-		$this->load->model("Airplanes");
-		$this->airports = $this->Airports->all();
-		$this->airplanes = $this->Airplanes->all();
+		$airplanes = new Airplanes();
+		$airports = new Airports();
+		$this->airportList = $airports->all();
+		$this->airplaneList = $airplanes->all();
 		//data is array of models has planes and airlines which are an array of stdObjects 
 		$this->data["airports"] = $this->airports;
 		$this->data["airplanes"] = $this->airplanes;
@@ -28,3 +28,5 @@ class Fleets extends CI_Model
 	}
 
 }
+
+?>
