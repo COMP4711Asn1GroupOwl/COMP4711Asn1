@@ -1,48 +1,33 @@
 <?php
 
- // return -1, 0, or 1 of $a's category name is earlier, equal to, or later than $b's
-	function orderByCategory($a, $b)
-	{
-	    if ($a->group < $b->group)
-	        return -1;
-	    elseif ($a->group > $b->group)
-	        return 1;
-	    else
-	        return 0;
-	}
-	class Airports extends CSV_Model
-	{
+class Airports extends CI_Model
+{
+	var $data;
 
-		 public function __construct()
-	    {
-	            parent::__construct(APPPATH . '../data/Airports.csv', 'id');
-	    }
+	// Constructor
+	public function __construct()
+	{
+		parent::__construct();
 
-	    function getCategorizedTasks()
+		$jsonAirports = file_get_contents('http://wacky.jlparry.com/info/airports');	
+		$this->data = json_decode($jsonAirports, true);
+		foreach ($this->data as $key => $record)
 		{
-		    // extract the undone tasks
-		    foreach ($this->all() as $airport)
-		    {
-		        if ($airport->status != 2)
-		            $undone[] = $airport;
-		    }
-
-		    // substitute the category name, for sorting
-		    foreach ($undone as $airport)
-		        $airport->group = $this->app->group($airport->group);
-
-		    // order them by category
-		    usort($undone, 'orderByCategory');
-
-		    // convert the array of airport objects into an array of associative objects       
-		    foreach ($undone as $airport)
-		        $converted[] = (array) $airport;
-
-			return $converted;
+			$record['key'] = $key;
+			$this->data[$key] = $record;
 		}
-	    
-
-
 	}
 
-?>
+	// retrieve a single quote, null if not found
+	public function get($which)
+	{
+		return !isset($this->data[$which]) ? null : $this->data[$which];
+	}
+
+	// retrieve all of the quotes
+	public function all()
+	{
+		return $this->data;
+	}
+
+}

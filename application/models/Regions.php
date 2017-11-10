@@ -1,47 +1,29 @@
 <?php
 
- // return -1, 0, or 1 of $a's category name is earlier, equal to, or later than $b's
-	function orderByCategory($a, $b)
+class Regions extends CI_Model
+{
+	var $data;
+
+	// Constructor
+	public function __construct()
 	{
-	    if ($a->group < $b->group)
-	        return -1;
-	    elseif ($a->group > $b->group)
-	        return 1;
-	    else
-	        return 0;
+		parent::__construct();
+
+		$jsonRegions = file_get_contents('http://wacky.jlparry.com/info/regions');	
+		$this->data['regions'] = json_decode($jsonRegions, true);
+
 	}
 
-	class Regions extends CSV_Model {
-
-	    public function __construct()
-	    {
-	            parent::__construct(APPPATH . '../data/Regions.csv', 'id');
-	    }
-
-
-	    function getCategorizedTasks()
-		{
-		    // extract the undone tasks
-		    foreach ($this->all() as $region)
-		    {
-		        if ($region->status != 2)
-		            $undone[] = $task;
-		    }
-
-		    // substitute the category name, for sorting
-		    foreach ($undone as $region)
-		        $region->group = $this->app->group($region->group);
-
-		    // order them by category
-		    usort($undone, 'orderByCategory');
-
-		    // convert the array of region objects into an array of associative objects       
-		    foreach ($undone as $region)
-		        $converted[] = (array) $region;
-
-			return $converted;
-		}
-	  
+	// retrieve a single quote, null if not found
+	public function get($which)
+	{
+		return !isset($this->data[$which]) ? null : $this->data[$which];
 	}
 
-?>
+	// retrieve all of the quotes
+	public function all()
+	{
+		return $this->data['regions'];
+	}
+
+}
