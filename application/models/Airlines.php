@@ -1,47 +1,34 @@
 <?php
 
- // return -1, 0, or 1 of $a's category name is earlier, equal to, or later than $b's
-	function orderByCategory($a, $b)
+class Airlines extends CI_Model
+{
+	var $data;
+
+	// Constructor
+	public function __construct()
 	{
-	    if ($a->group < $b->group)
-	        return -1;
-	    elseif ($a->group > $b->group)
-	        return 1;
-	    else
-	        return 0;
+		parent::__construct();
+
+		$jsonAirlines = file_get_contents('http://wacky.jlparry.com/info/airlines');	
+		$this->data = json_decode($jsonAirlines, true);
+
+		foreach ($this->data as $key => $record)
+		{
+			$record['key'] = $key;
+			$this->data[$key] = $record;
+		}
 	}
 
-	class Airlines extends CSV_Model {
+	// retrieve a single quote, null if not found
+	public function get($which)
+	{
+		return !isset($this->data[$which]) ? null : $this->data[$which];
+	}
 
-	    public function __construct()
-	    {
-	            parent::__construct(APPPATH . '../data/Airlines.csv', 'id');
-	    }
+	// retrieve all of the quotes
+	public function all()
+	{
+		return $this->data;
+	}
 
-
-	    function getCategorizedTasks()
-		{
-		    // extract the undone tasks
-		    foreach ($this->all() as $airline)
-		    {
-		        if ($airline->status != 2)
-		            $undone[] = $airline;
-		    }
-
-		    // substitute the category name, for sorting
-		    foreach ($undone as $airline)
-		        $airline->group = $this->app->group($airline->group);
-
-		    // order them by category
-		    usort($undone, 'orderByCategory');
-
-		    // convert the array of airline objects into an array of associative objects       
-		    foreach ($undone as $airline)
-		        $converted[] = (array) $airline;
-
-			return $converted;
-		}
-	    
-	} 
-
-?>
+}
