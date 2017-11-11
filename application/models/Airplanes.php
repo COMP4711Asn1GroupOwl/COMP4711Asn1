@@ -30,7 +30,11 @@ class Airplanes extends CSV_Model
 			return $converted;
 		}
     
-
+		// retrieve a single quote, null if not found
+		public function get($which)
+		{
+			return !isset($this->data[$which]) ? null : $this->data[$which];
+		}
 	}
 
 ?>
