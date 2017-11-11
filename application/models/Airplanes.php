@@ -1,35 +1,36 @@
 <?php
 
-class Airplanes extends CI_Model
-{
-	var $data;
-
-	// Constructor
-	public function __construct()
+class Airplanes extends CSV_Model
 	{
-		parent::__construct();
+		public function __construct()
+	    {
+            parent::__construct(APPPATH . '../data/Airplanes.csv', 'id');
+	    }
 
-		$jsonAirplanes = file_get_contents('http://wacky.jlparry.com/info/airplanes');	
-		$this->data = json_decode($jsonAirplanes, true);
-                
-		// inject each "record" key into the record itself, for ease of presentation
-		foreach ($this->data as $key => $record)
+	    function getCategorizedTasks()
 		{
-			$record['key'] = $key;
-			$this->data[$key] = $record;
+		    // extract the undone airlines
+		    foreach ($this->all() as $airplane)
+		    {
+		        if ($airplane->status != 2)
+		            $undone[] = $airplane;
+		    }
+
+		    // // substitute the category name, for sorting
+		    // foreach ($undone as $airline)
+		    //     $airline->group = $this->app->group($airline->group);
+
+		    // order them by category
+		    usort($undone, 'orderByCategory');
+
+		    // convert the array of airplane objects into an array of associative objects       
+		    foreach ($undone as $airplane)
+		        $converted[] = (array) $airplane;
+
+			return $converted;
 		}
+    
+
 	}
 
-	// retrieve a single quote, null if not found
-	public function get($which)
-	{
-		return !isset($this->data[$which]) ? null : $this->data[$which];
-	}
-
-	// retrieve all of the quotes
-	public function all()
-	{
-		return $this->data;
-	}
-
-}
+?>
