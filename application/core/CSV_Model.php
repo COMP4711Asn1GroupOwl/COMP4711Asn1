@@ -30,6 +30,7 @@ class CSV_Model extends Memory_Model
 			$this->_origin = $origin;
 
 		// remember the other constructor fields
+
 		$this->_keyfield = $keyfield;
 		$this->_entity = $entity;
 
@@ -62,10 +63,15 @@ class CSV_Model extends Memory_Model
 				{
 					// build object from a row
 					$record = new stdClass();
+					$this->_fields[0] = "id";
 					for ($i = 0; $i < count($this->_fields); $i ++ )
+					{
 						$record->{$this->_fields[$i]} = $data[$i];
+					}
+					
 					$key = $record->{$this->_keyfield};
 					$this->_data[$key] = $record;
+					
 				}
 			}
 			fclose($handle);
