@@ -255,10 +255,10 @@ class MY_Model2 extends MY_Model
 //  Record-oriented functions
 //---------------------------------------------------------------------------
 	// Retrieve an existing DB record as an object
-	function get($key1, $key2)
+	function get($key1)
 	{
 		$this->db->where($this->_keyField, $key1);
-		$this->db->where($this->_keyField2, $key2);
+		// $this->db->where($this->_keyField2, $key2);
 		$query = $this->db->get($this->_tableName);
 		if ($query->num_rows() < 1)
 			return null;
