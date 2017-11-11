@@ -60,9 +60,9 @@ class Application extends CI_Controller
 	{
 		// this is the view we want shown
 		$this->data['pagebody'] = 'fleet';
-                $this->data['pagetitle'] = 'Airplane';
+        $this->data['pagetitle'] = 'Airplane';
 		// build the list of authors, to pass on to our view
-		$source = $this->fleets->Airplanes->get($key);
+		$source = $this->fleets->data['airplanes'][$key];
 		// pass on the data to present, adding the author record's fields
 		$this->data = array_merge($this->data, (array) $source);
 

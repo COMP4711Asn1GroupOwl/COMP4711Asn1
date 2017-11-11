@@ -51,7 +51,7 @@ interface DataMapper
 	 * @param string $key2 Second part of composite key, if applicable
 	 * @return object The requested record, null if not found.
 	 */
-	function get($key, $key2);
+	function get($key);
 
 	/**
 	 * Update an existing DB record.
