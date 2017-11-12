@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // the menu basics (text navbar)
 $config['menu_choices'] = array(
     'menudata' => array(
-        array('name' => 'Fleet', 'link' => '/FleetController/index'),
-        array('name' => 'Flight', 'link' => '/FlightController/index'),
+        array('name' => 'Fleet', 'link' => '/info/fleet'),
+        array('name' => 'Flight', 'link' => '/info/flight'),
         array('name' => 'About', 'link' => '/About/index')
         )
     );
@@ -379,7 +379,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = '/tmp';     // this should be a writeable folder on your system
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;

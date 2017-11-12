@@ -1,29 +1,38 @@
 <?php
-class Flights extends CI_Model
-{
-	var $data = array();
-	var $regions;
-	var $airports;
-
-	// Constructor
-	public function __construct()
+	require_once APPPATH . 'models/Airlines.php';
+	class Flights extends CI_Model
 	{
-		parent::__construct();
+		var $data = array();
+		//var $airlines;
+		var $airports;
+		var $airplanes;
+
+		// Constructor
+		public function __construct()
+		{
+			parent::__construct();
+			
+			//assign models to each variable
+			//$this->load->model('Airlines');
+			$airlines = new Airlines();
+			$airports = new Airports();
+			$airplanes = new Airplanes();
+
+			$this->airlinelist = json_decode(json_encode($airlines->all()), True); 
+			$this->airportlist = json_decode(json_encode($airports->all()), True); 
+			$this->airplanelist = json_decode(json_encode($airplanes->all()), True); 
+			
+			//data is array of models has planes and airlines which are an array of stdObjects 
+			$this->data['airlines'] = $this->airlinelist;
+			$this->data['airports'] = $this->airportlist;
+			$this->data['airplanes'] = $this->airplanelist;	
+		}
 		
-		//assign models to each variable
-		$this->load->model('Regions');
-		$this->load->model('Airports');
-		$this->regions = $this->Regions->all();
-		$this->airports = $this->Airports->all();
+		// retrieve all of the quotes
+		public function all()
+		{
+			return $this->data;
+		}
+	}
 
-		//data is array of models has planes and airlines which are an array of stdObjects 
-		$this->data['regions'] = $this->regions;
-		$this->data['airports'] = $this->airports;
-	}
-	
-	// retrieve all of the quotes
-	public function all()
-	{
-		return $this->data;
-	}
-}
+?>

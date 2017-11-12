@@ -1,9 +1,18 @@
 <div class="row">
-    {authors}
 	<div class="span4">
-		<a href="/welcome/show/{key}">
-			<img src="/pix/{who}.jpg" title="{who} plays {role}"/>
-		</a>
+            <p>Number of Airplanes: {airplaneCount}</p>
+            <p>Number of Airlines: {airlineCount}</p>
 	</div>
-    {/authors}
+    
+    	<div class="span4">
+            <p>Base Airport : {baseAirport}</p>
+	</div>
+    
+        <div class="span4">
+            <p>Destination 1 : {dest1Airport}</p>
+            <p>Destination 2 : {dest2Airport}</p>
+            <p>Destination 3 : {dest3Airport}</p>
+	</div>
+    
+    
 </div>
