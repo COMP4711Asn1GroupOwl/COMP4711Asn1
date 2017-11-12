@@ -64,7 +64,7 @@ if (!defined('APPPATH'))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span>Metro</span></a>
+                <a class="brand" href="/"><span>{pagetitle}</span></a>
 
                 <a class="brand" href="/"><img src="/assets/images/logo.png"/></a>
                 {menubar} </div>
@@ -77,7 +77,7 @@ if (!defined('APPPATH'))
     <div class="container-fluid-full">
         <div class="row-fluid">
             <div id="content">
-                <h1>{pagetitle}</h1>
+                <h1>Welcome!</h1>
                 {content}
             </div>
         </div>
