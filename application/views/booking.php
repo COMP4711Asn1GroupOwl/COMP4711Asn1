@@ -23,7 +23,7 @@
     <div>
         
         <b>Departure Location: </b><i>{base}</i>
-        &nbsp;&nbsp;&nbsp;<b>>></b>&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;<b>>></b>
         <b>{target}</b>
     </div>
     <div>
