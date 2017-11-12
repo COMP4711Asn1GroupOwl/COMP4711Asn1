@@ -2969,5 +2969,16 @@ ul.messagesList li span.date {
 		background: url(../img/chat-right-metro@2x.png) no-repeat 0px 0px;
 		background-size: 100%;
 	}
-    
+}
+
+.centerText {
+    text-align: center !important;
+}
+
+.fontSize {
+    font-size: 16px;
+}
+
+.tablePadding {
+    margin-top: 20px;
 }
