@@ -21,6 +21,10 @@ class Fleets extends CI_Model
 		$this->data['airplanes'] = $this->airplanelist;		
 	}
 
+	public function getAirplane($which) {
+		return !isset($this->data['airplanes'][$which]) ? null : $this->data['airplanes'][$which];
+	}
+
 	// retrieve all of the quotes
 	public function all()
 	{
