@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 class Flight extends Application {	
 	var $owl;
 	var $dests;
@@ -14,7 +14,7 @@ class Flight extends Application {
 
 		$this->load->model('Flights');
 		$this->data = $this->Flights->all();
-
+                    
 		// Find Owl Airline
 		foreach ($this->data['airlines'] as $key => $record)
 			if ($record['id'] == 'owl')

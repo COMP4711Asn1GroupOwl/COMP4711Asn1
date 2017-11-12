@@ -52,7 +52,6 @@ class Welcome extends Application
                     $dest3 = $value;
                 }
             }
-                    
             
             $this->data['pagebody'] = 'homepage';
             $this->data['baseAirport'] = $base['airport'];
