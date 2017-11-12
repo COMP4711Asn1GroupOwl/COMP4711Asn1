@@ -12,7 +12,6 @@
             <p>Destination 1 : {dest1Airport}</p>
             <p>Destination 2 : {dest2Airport}</p>
             <p>Destination 3 : {dest3Airport}</p>
-	</div>
-    
-    
+	</div
+  
 </div>
