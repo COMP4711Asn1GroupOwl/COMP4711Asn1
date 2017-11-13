@@ -12,7 +12,7 @@ if (! class_exists('PHPUnit_Framework_TestCase'))
 /**
  * Description of PlaneTest
  *
- * @author Lancelei
+ * @author Michael
  */
 class PlaneTest extends PHPUnit_Framework_TestCase {
     
