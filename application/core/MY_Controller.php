@@ -37,6 +37,8 @@ class Application extends CI_Controller
 	 */
 	function render($template = 'template')
 	{
+		// $this->data['role'] = $this->session->userdata('userrole');
+
 		// Build the menubar
 		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 
@@ -58,15 +60,21 @@ class Application extends CI_Controller
 	 */
 	public function show($key)
 	{
-		// this is the view we want shown
-		$this->data['pagebody'] = 'fleet';
-                $this->data['pagetitle'] = 'Airplane';
-		// build the list of authors, to pass on to our view
-		$source = $this->fleets->Airplanes->get($key);
-		// pass on the data to present, adding the author record's fields
-		$this->data = array_merge($this->data, (array) $source);
+		// $role = $this->session->userdata('userrole');
+		// // this is the view we want shown
+		// if ($role == ROLE_OWNER)
+		// 	$this->data['pagebody'] = 'fleetAdmin';
+		// else 
+		// 	$this->data['pagebody'] = 'fleet';
+	    
+		// $this->data['pagetitle'] = 'Airplane';
+		
+		// // build the list of authors, to pass on to our view
+		// $source = $this->fleets->data['airplanes'][$key];
+		// // pass on the data to present, adding the author record's fields
+		// $this->data = array_merge($this->data, (array) $source);
 
-		$this->render();
+		// $this->render();
 	}
 
 }

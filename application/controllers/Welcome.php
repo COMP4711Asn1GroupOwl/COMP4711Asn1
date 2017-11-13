@@ -19,13 +19,14 @@ class Welcome extends Application
 	 */
 	public function index()
 	{
-            // Get the count of airplanes and airlines
-            $result = count($this->flights->airplanes);
-            $result2 = count($this->flights->airlines);
             
             // this is the view we want shown
             $this->load->model('Flights');
             $this->data = $this->Flights->all();
+            
+            // Get the count of airplanes and airlines
+            $result = count($this->data['airplanes']);
+            $result2 = count($this->data['airlines']);
             
             // find the data in the array that has id of owl
             foreach ($this->data['airlines'] as $key => $record) {
@@ -52,7 +53,6 @@ class Welcome extends Application
                     $dest3 = $value;
                 }
             }
-                    
             
             $this->data['pagebody'] = 'homepage';
             $this->data['baseAirport'] = $base['airport'];
