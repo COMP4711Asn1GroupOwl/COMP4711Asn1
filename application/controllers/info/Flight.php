@@ -54,7 +54,7 @@ class Flight extends Application {
 			$this->data = array_merge($this->data, (array) $flight);
 		}
 	    
-		$this->data['pagetitle'] = 'Airplane';
+		$this->data['pagetitle'] = 'Flight';
 
 		$this->render();
 	}
@@ -81,13 +81,14 @@ class Flight extends Application {
 	        // {
 	            $this->flights->updateSchedule($flight);
 
-	            $this->alert('Fleet ' . $flight->planeCode . ' updated', 'success');
+	            $this->alert('Fleet ' . $flight['planeCode'] . ' updated', 'success');
 
 	        // }
 	    } else
 	    {
 	        $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
 	    }
+	    $test = $this->flights->getSchedule();
 
 	    redirect('/info/flight');
 	}

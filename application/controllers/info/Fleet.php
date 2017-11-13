@@ -81,7 +81,7 @@ class Fleet extends Application {
 
 	    		// var_dump($this->fleets->data['airplanes'][$fleet->id]);
 
-	            $this->alert('Fleet ' . $fleet->id . ' updated', 'success');
+	            $this->alert('Fleet ' . $fleet['id'] . ' updated', 'success');
 
 	        // }
 	    } else
