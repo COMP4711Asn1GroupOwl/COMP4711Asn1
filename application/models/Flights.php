@@ -24,22 +24,9 @@
 			//data is array of models has planes and airlines which are an array of stdObjects 
 			$this->data['airlines'] = $this->airlinelist;
 			$this->data['airports'] = $this->airportlist;
-			$this->data['airplanes'] = $this->airplanelist;	
-		}
+			$this->data['airplanes'] = $this->airplanelist;
 
-		public function rules()
-		{
-		    $config = array(
-		        ['field' => 'seats', 'label' => 'Seats', 'rules' => 'integer|less_than[10]'],
-		        ['field' => 'reach', 'label' => 'Reach', 'rules' => 'integer|max_length[4]'],
-		        ['field' => 'cruise', 'label' => 'Cruise', 'rules' => 'integer|less_than[999]'],
-		        ['field' => 'takeoff', 'label' => 'Take off', 'rules' => 'integer'],
-		        ['field' => 'hourly', 'label' => 'Hourly', 'rules' => 'integer'],
-		    );
-		    return $config;
-		}
-
-		public function getSchedule() {
+			// Setup Schedule
 			// Find Owl Airline
 			foreach ($this->data['airlines'] as $key => $record)
 				if ($record['id'] == 'owl')
@@ -75,10 +62,27 @@
 					'dest' => $owl['dest3'], 
 					'planeCode' => $planes['3']['planeCode'], 
 					'community' => $airport['community']));
+		}
+
+		public function rules()
+		{
+		    $config = array(
+		        ['field' => 'seats', 'label' => 'Seats', 'rules' => 'integer|less_than[10]'],
+		        ['field' => 'reach', 'label' => 'Reach', 'rules' => 'integer|max_length[4]'],
+		        ['field' => 'cruise', 'label' => 'Cruise', 'rules' => 'integer|less_than[999]'],
+		        ['field' => 'takeoff', 'label' => 'Take off', 'rules' => 'integer'],
+		        ['field' => 'hourly', 'label' => 'Hourly', 'rules' => 'integer'],
+		    );
+		    return $config;
+		}
+
+		public function getSchedule() {
+			
 			return $this->data['schedules'];
 		}
 		
 		public function updateSchedule($newSchedule) {
+
 			$this->data['schedules'][$newSchedule['planeCode']]['dest'] = $newSchedule['dest'];
 			$this->data['schedules'][$newSchedule['planeCode']]['community'] = $newSchedule['community'];
 		}
