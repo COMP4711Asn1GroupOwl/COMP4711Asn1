@@ -13,36 +13,105 @@ class Flight extends Application {
 	public function index() {
 
 		$this->load->model('Flights');
-		$this->data = $this->Flights->all();
-                    
-		// Find Owl Airline
-		foreach ($this->data['airlines'] as $key => $record)
-			if ($record['id'] == 'owl')
-				$owl = $record;
-
-		// Find correct Airport
-		foreach ($this->data['airports'] as $key => $record)
-			if ($record['id'] == $owl['base'])
-				$airport = $record;
-
-		// Collect destination
-		$dests = array('1' => array('dest' => $owl['dest1']), '2' => array('dest' => $owl['dest2']), '3' => array('dest' => $owl['dest3']));
-
-		$this->data['dests'] = $dests;
-
-		// Populate planes
-		$i = 1; // Count to 3 because we have 3 dests
-		foreach ($this->data['airplanes'] as $airplane)
-			if ($i < 4) 
-				$planes[$i++] = array('planeCode' => $airplane['id']);
-
-		// Formate schedules
-		$this->data['schedules'] = array('1' => array('dest' => $owl['dest1'], 'planeCode' => $planes['1']['planeCode'], 'community' => $airport['community']), '2' => array('dest' => $owl['dest2'], 'planeCode' => $planes['2']['planeCode'], 'community' => $airport['community']), '3' => array('dest' => $owl['dest3'], 'planeCode' => $planes['3']['planeCode'], 'community' => $airport['community']));
+		// $this->data = $this->Flights->all();
+        $this->data['schedules'] = $this->Flights->getSchedule();
 
 		$this->data['pagebody'] = 'flight';
 		$this->data['pagetitle'] = 'Flights';
 		$this->render();
 		// $this->load->view('FlightView', $data);
+	}
+
+	public function show($key)
+	{
+		$this->load->helper('form');
+		$role = $this->session->userdata('userrole');
+		$this->data['schedules'] = $this->flights->getSchedule();
+		
+		foreach($this->data['schedules'] as $schedule) {
+			if ($schedule['planeCode'] == $key)
+				$this->session->set_userdata('flight', $schedule);
+		}
+		
+		$flight = $this->session->userdata('flight');
+
+		// this is the view we want shown
+		if ($role == ROLE_OWNER) {
+			$this->data['pagebody'] = 'flightDetailAdmin';
+			$fields = array(
+				'fmodel' => form_label($flight['planeCode']),
+		        'fairline' => form_label('Airline: Owl'),
+		        'fto'  => form_label('To') . form_input('dest', $flight['dest']),
+		        'fterminal'  => form_label('Terminal: Main'),
+		        'fcommunity'  => form_label('Community') . form_input('community', $flight['community']),
+		        'zsubmit'    => form_submit('submit', 'Update the Flight'),
+		    );
+
+		    $this->data = array_merge($this->data, $fields);
+
+		} else {
+			$this->data['pagebody'] = 'flightDetail';
+			$this->data = array_merge($this->data, (array) $flight);
+		}
+	    
+		$this->data['pagetitle'] = 'Airplane';
+
+		$this->render();
+	}
+
+	public function submit()
+	{
+	    // setup for validation
+	    $this->load->library('form_validation');
+	    $this->form_validation->set_rules($this->flights->rules());
+	    $flight = (array) $this->session->userdata('flight');
+	    $flight = array_merge($flight, $this->input->post());
+	    // $flight = (object) $flight;  // convert back to object
+	    $this->session->set_userdata('flight', (object) $flight);
+	    
+	    // validate away
+	    if ($this->form_validation->run())
+	    {
+	        // if (empty($flight->id))
+	        // {
+	        //     $flight->id = $this->fleets->id;
+	        //     $this->fleets->add($flight);
+	        //     $this->alert('Fleet ' . $flight->id . ' added', 'success');
+	        // } else
+	        // {
+	            $this->flights->updateSchedule($flight);
+
+	            $this->alert('Fleet ' . $flight->planeCode . ' updated', 'success');
+
+	        // }
+	    } else
+	    {
+	        $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
+	    }
+
+	    redirect('/info/flight');
+	}
+
+	// Build a suitable error mesage
+	private function alert($message) {
+	    $this->load->helper('html');        
+	    $this->data['error'] = heading($message,3);
+	}
+
+	// Forget about this edit
+	function cancel() {
+	    $this->session->unset_userdata('flight');
+	    redirect('/info/flight');
+	}
+
+	// Delete this item altogether
+	function delete()
+	{
+	    $dto = $this->session->userdata('flight');
+	    $flight = $this->flights->get($dto->id);
+	    $this->flights->delete($flight->id);
+	    $this->session->unset_userdata('flight');
+	    redirect('/info/flight');
 	}
 }
 ?>	

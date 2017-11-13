@@ -7,7 +7,7 @@ class Fleet extends Application {
 
 	public function index() {
 		$this->load->model('Fleets');
-        $this->data = $this->Fleets->all();
+        $this->data = $this->fleets->all();
 		
 		$this->data['pagebody'] = 'airplane';
 		$this->data['pagetitle'] = 'Fleet';
@@ -19,31 +19,33 @@ class Fleet extends Application {
 	{
 		$this->load->helper('form');
 		$role = $this->session->userdata('userrole');
-		// $this->session->set_userdata('fleet', $this->fleets->data['airplanes'][$key]);
+		
+		$this->session->set_userdata('fleet', $this->fleets->getAirplane($key));
+		
 		$fleet = $this->session->userdata('fleet');
 
 		// this is the view we want shown
-		if ($role == ROLE_OWNER)
+		if ($role == ROLE_OWNER) {
 			$this->data['pagebody'] = 'fleetAdmin';
-		else 
+			$fields = array(
+				'fmodel' => form_label($fleet['id']),
+		        'fmanufacturer' => form_label('Manufacturer') . form_input('manufacturer', $fleet['manufacturer']),
+		        'fseats'  => form_label('Seats') . form_input('seats', $fleet['seats']),
+		        'freach'  => form_label('Reach') . form_input('reach', $fleet['reach']),
+		        'fcruise'  => form_label('Cruise') . form_input('cruise', $fleet['cruise']),
+		        'ftakeoff'  => form_label('Takeoff') . form_input('takeoff', $fleet['takeoff']),
+		        'fhourly'  => form_label('Hourly') . form_input('hourly', $fleet['hourly']),
+		        'zsubmit'    => form_submit('submit', 'Update the Fleet'),
+		    );
+
+		    $this->data = array_merge($this->data, $fields);
+
+		} else {
 			$this->data['pagebody'] = 'fleet';
+			$this->data = array_merge($this->data, (array) $fleet);
+		}
 	    
 		$this->data['pagetitle'] = 'Airplane';
-		
-		$fields = array(
-			'fmodel' => form_label($fleet->id),
-	        'fmanufacturer' => form_label('Manufacturer') . form_input('manufacturer', $fleet->manufacturer),
-	        'fseats'  => form_label('Seats') . form_input('seats', $fleet->seats),
-	        'freach'  => form_label('Reach') . form_input('reach', $fleet->reach),
-	        'fcruise'  => form_label('Cruise') . form_input('cruise', $fleet->cruise),
-	        'ftakeoff'  => form_label('Takeoff') . form_input('takeoff', $fleet->takeoff),
-	        'fhourly'  => form_label('Hourly') . form_input('hourly', $fleet->hourly),
-	        'zsubmit'    => form_submit('submit', 'Update the Fleet'),
-	    );
-
-		// $source = $this->fleets->data['airplanes'][$key];
-		// $this->data = array_merge($this->data, (array) $source);
-		$this->data = array_merge($this->data, $fields);
 
 		$this->render();
 	}
@@ -60,6 +62,10 @@ class Fleet extends Application {
 	    // setup for validation
 	    $this->load->library('form_validation');
 	    $this->form_validation->set_rules($this->fleets->rules());
+	    $fleet = (array) $this->session->userdata('fleet');
+	    $fleet = array_merge($fleet, $this->input->post());
+	    // $fleet = (object) $fleet;  // convert back to object
+	    $this->session->set_userdata('fleet', (object) $fleet);
 	    
 	    // validate away
 	    if ($this->form_validation->run())
@@ -72,17 +78,17 @@ class Fleet extends Application {
 	        // } else
 	        // {
 	            $this->fleets->updateAirplane($fleet);
+
+	    		// var_dump($this->fleets->data['airplanes'][$fleet->id]);
+
 	            $this->alert('Fleet ' . $fleet->id . ' updated', 'success');
 
-	            $fleet = (array) $this->session->userdata('fleet');
-			    $fleet = array_merge($fleet, $this->input->post());
-			    $fleet = (object) $fleet;  // convert back to object
-			    $this->session->set_userdata('fleet', (object) $fleet);
 	        // }
 	    } else
 	    {
 	        $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
 	    }
+
 	    redirect('/info/fleet');
 	}
 

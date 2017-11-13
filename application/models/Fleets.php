@@ -34,12 +34,13 @@ class Fleets extends CI_Model
 	}
 
 	public function updateAirplane($newAirplane) {
-		$this->data['airplanes'][$newAirplane->id]['manufacturer'] = $newAirplane->manufacturer;
-		$this->data['airplanes'][$newAirplane->id]['seats'] = $newAirplane->seats;
-		$this->data['airplanes'][$newAirplane->id]['reach'] = $newAirplane->reach;
-		$this->data['airplanes'][$newAirplane->id]['cruise'] = $newAirplane->cruise;
-		$this->data['airplanes'][$newAirplane->id]['takeoff'] = $newAirplane->takeoff;
-		$this->data['airplanes'][$newAirplane->id]['hourly'] = $newAirplane->hourly;
+		$this->data['airplanes'][$newAirplane['id']]['manufacturer'] = $newAirplane['manufacturer'];
+		$this->data['airplanes'][$newAirplane['id']]['seats'] = $newAirplane['seats'];
+		$this->data['airplanes'][$newAirplane['id']]['reach'] = $newAirplane['reach'];
+		$this->data['airplanes'][$newAirplane['id']]['cruise'] = $newAirplane['cruise'];
+		$this->data['airplanes'][$newAirplane['id']]['takeoff'] = $newAirplane['takeoff'];
+		$this->data['airplanes'][$newAirplane['id']]['hourly'] = $newAirplane['hourly'];
+		// reset($this->data);
 	}
 
 	public function getAirplane($which) {
