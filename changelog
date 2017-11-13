@@ -13,6 +13,7 @@ Release Date 10/12/2017
 - Added a AirportTest class
 - Added a FlightTest class
 - Added a PlaneRulesTest class
+- Added a PlaneTest class
 - Added phpunit.xml.dist to root folder
 
 ----------------------------
