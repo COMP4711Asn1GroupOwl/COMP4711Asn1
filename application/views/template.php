@@ -64,7 +64,7 @@ if (!defined('APPPATH'))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="/"><span>{pagetitle}</span></a>
+                <a class="brand" href="/"><span>Owl Airline</span></a>
 
                 <a class="brand" href="/"><img src="/assets/images/logo.png"/></a>
                 {menubar} </div>
