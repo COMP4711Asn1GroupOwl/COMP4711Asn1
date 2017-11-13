@@ -77,7 +77,7 @@ if (!defined('APPPATH'))
     <div class="container-fluid-full">
         <div class="row-fluid">
             <div id="content">
-                <h1>Welcome!</h1>
+                <h1>{pagetitle}</h1>
                 {content}
             </div>
         </div>

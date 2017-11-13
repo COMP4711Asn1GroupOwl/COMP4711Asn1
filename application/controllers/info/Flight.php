@@ -31,8 +31,10 @@ class Flight extends Application {
 		$this->data['dests'] = $dests;
 
 		// Populate planes
-		for ($i = 1; $i <= 3; $i++)
-			$planes[$i] = array('planeCode' => isset($this->data['airlines'][$i]['id']) ? $this->data['airlines'][$i]['id'] : null);
+		$i = 1; // Count to 3 because we have 3 dests
+		foreach ($this->data['airplanes'] as $airplane)
+			if ($i < 4) 
+				$planes[$i++] = array('planeCode' => $airplane['id']);
 
 		// Formate schedules
 		$this->data['schedules'] = array('1' => array('dest' => $owl['dest1'], 'planeCode' => $planes['1']['planeCode'], 'community' => $airport['community']), '2' => array('dest' => $owl['dest2'], 'planeCode' => $planes['2']['planeCode'], 'community' => $airport['community']), '3' => array('dest' => $owl['dest3'], 'planeCode' => $planes['3']['planeCode'], 'community' => $airport['community']));
