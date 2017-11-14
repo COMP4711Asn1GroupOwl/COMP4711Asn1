@@ -10,7 +10,7 @@
             </tr>
         </thead> 
         <tbody>
-        	{schedules}
+            {schedules}
             <tr>
                 <td><a href="/info/flight/show/{planeCode}">{planeCode}</a></td>
                 <td>Owl</td>
