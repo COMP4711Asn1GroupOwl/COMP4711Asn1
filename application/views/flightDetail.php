@@ -2,12 +2,14 @@
 	<div class="span4">
 		
             <h3>
-                Airplane {planeCode} 
+                Airplane {id} 
             </h3>
-            <p>Airline: Owl </p>
-            <p>To: {dest} </p>
-            <p>Terminal: Main </p>
-            <p>Community: {community} </p>
+            <p>Airline: {Airline} </p>
+            <p>To: {To} </p>
+            <p>Time to Board: {TimeToBoard} </p>
+            <p>Terminal: {Terminal} </p>
+            <p>Community: {Community} </p>
+            <p>Time to Arrive: {TimeToArrive} </p>
 	</div>
     <br/>
 </div>
