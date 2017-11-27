@@ -29,11 +29,17 @@ class Airplanes extends CSV_Model
 
 			return $converted;
 		}
-    
-		// retrieve a single quote, null if not found
-		public function get($which)
+		
+    	public function rules()
 		{
-			return !isset($this->data[$which]) ? null : $this->data[$which];
+		    $config = array(
+		        ['field' => 'seats', 'label' => 'Seats', 'rules' => 'integer|less_than[10]'],
+		        ['field' => 'reach', 'label' => 'Reach', 'rules' => 'integer|max_length[4]'],
+		        ['field' => 'cruise', 'label' => 'Cruise', 'rules' => 'integer|less_than[999]'],
+		        ['field' => 'takeoff', 'label' => 'Take off', 'rules' => 'integer'],
+		        ['field' => 'hourly', 'label' => 'Hourly', 'rules' => 'integer'],
+		    );
+		    return $config;
 		}
 	}
 
