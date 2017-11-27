@@ -22,7 +22,7 @@ class Fleet extends Application {
 		$this->session->set_userdata('fleet', $this->Airplanes->get($key));
 		
 		$fleet = $this->session->userdata('fleet');
-
+		
 		// this is the view we want shown
 		if ($role == ROLE_OWNER) {
 			$this->data['pagebody'] = 'fleetAdmin';
@@ -70,8 +70,8 @@ class Fleet extends Application {
 	    {
 	        $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
 	    }
-
-	    redirect('/info/fleet');
+	    $key = $fleet->id;
+	    redirect('/info/Fleet');
 	}
 
 	// Build a suitable error mesage
