@@ -1,10 +1,6 @@
 
 <?php
 class Flight extends Application {	
-	var $owl;
-	var $dests;
-	var $planes;
-	var $airport;
 
 	function __construct() {
 		parent::__construct();
@@ -12,10 +8,10 @@ class Flight extends Application {
 
 	public function index() {
 
-		$this->load->model('Flights');
+		// $this->load->model('Flights');
 		// $this->data = $this->Flights->all();
         $this->data['schedules'] = $this->Flights->getSchedule();
-
+        
 		$this->data['pagebody'] = 'flight';
 		$this->data['pagetitle'] = 'Flights';
 		$this->render();
@@ -26,12 +22,40 @@ class Flight extends Application {
 	{
 		$this->load->helper('form');
 		$role = $this->session->userdata('userrole');
-		$this->data['schedules'] = $this->flights->getSchedule();
+		// $this->data['schedules'] = $this->flights->getSchedule();
 		
-		foreach($this->data['schedules'] as $schedule) {
-			if ($schedule['planeCode'] == $key)
-				$this->session->set_userdata('flight', $schedule);
-		}
+		// foreach($this->data['schedules'] as $schedule) {
+		// 	if ($schedule['planeCode'] == $key)
+		// 		$this->session->set_userdata('flight', $schedule);
+		// }
+		
+		// $flight = $this->session->userdata('flight');
+
+		// // this is the view we want shown
+		// if ($role == ROLE_OWNER) {
+		// 	$this->data['pagebody'] = 'flightDetailAdmin';
+		// 	$fields = array(
+		// 		'fmodel' => form_label($flight['planeCode']),
+		//         'fairline' => form_label('Airline: Owl'),
+		//         'fto'  => form_label('To') . form_input('dest', $flight['dest']),
+		//         'fterminal'  => form_label('Terminal: Main'),
+		//         'fcommunity'  => form_label('Community') . form_input('community', $flight['community']),
+		//         'zsubmit'    => form_submit('submit', 'Update the Flight'),
+		//     );
+
+		//     $this->data = array_merge($this->data, $fields);
+
+		// } else {
+		// 	$this->data['pagebody'] = 'flightDetail';
+		// 	$this->data = array_merge($this->data, (array) $flight);
+		// }
+	    
+		// $this->data['pagetitle'] = 'Flight';
+
+		// $this->render();
+		
+
+		$this->session->set_userdata('flight', $this->Flights->get($key));
 		
 		$flight = $this->session->userdata('flight');
 
@@ -39,11 +63,13 @@ class Flight extends Application {
 		if ($role == ROLE_OWNER) {
 			$this->data['pagebody'] = 'flightDetailAdmin';
 			$fields = array(
-				'fmodel' => form_label($flight['planeCode']),
-		        'fairline' => form_label('Airline: Owl'),
-		        'fto'  => form_label('To') . form_input('dest', $flight['dest']),
-		        'fterminal'  => form_label('Terminal: Main'),
-		        'fcommunity'  => form_label('Community') . form_input('community', $flight['community']),
+				'fmodel' => form_label($flight->id),
+		        'fairline' => form_label($flight->airline),
+		        'fto'  => form_label('To') . form_input('to', $flight->to),
+		        'ftimeToBoard'  => form_label('Time to Board') . form_input('timeToBoard', $flight->timeToBoard),
+		        'fterminal'  => form_label('Terminal') . form_input('terminal', $flight->terminal),
+		        'fcommunity'  => form_label('Community') . form_input('community', $flight->community),
+		        'ftimeToArrive'  => form_label('Time to Arrive') . form_input('timeToArrive', $flight->timeToArrive),
 		        'zsubmit'    => form_submit('submit', 'Update the Flight'),
 		    );
 
