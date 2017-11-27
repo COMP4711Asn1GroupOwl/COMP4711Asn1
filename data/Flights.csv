@@ -1,0 +1,4 @@
+id,airline,to,timeToBoard,terminal,community,timeToArrive
+Avanti,Owl,YRV,9:30,1,"Salmon Arm",10:40
+Baron,Owl,YCZ,10:30,3,"Salmon Arm",12:00
+Carvan,Owl,YVE,11:30,2,"Salmon Arm",12:30

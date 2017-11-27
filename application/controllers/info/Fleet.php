@@ -7,7 +7,7 @@ class Fleet extends Application {
 
 	public function index() {
 		$this->load->model('Fleets');
-        $this->data = $this->fleets->all();
+        $this->data = $this->Fleets->all();
 		
 		$this->data['pagebody'] = 'airplane';
 		$this->data['pagetitle'] = 'Fleet';
@@ -20,7 +20,7 @@ class Fleet extends Application {
 		$this->load->helper('form');
 		$role = $this->session->userdata('userrole');
 		
-		$this->session->set_userdata('fleet', $this->fleets->getAirplane($key));
+		$this->session->set_userdata('fleet', $this->Fleets->getAirplane($key));
 		
 		$fleet = $this->session->userdata('fleet');
 

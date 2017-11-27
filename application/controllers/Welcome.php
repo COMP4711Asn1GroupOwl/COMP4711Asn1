@@ -19,48 +19,22 @@ class Welcome extends Application
 	 */
 	public function index()
 	{
-            
-            // this is the view we want shown
-            $this->load->model('Flights');
-            $this->data = $this->Flights->all();
-            
-            // Get the count of airplanes and airlines
-            $result = count($this->data['airplanes']);
-            $result2 = count($this->data['airlines']);
+            $this->data['airlines'] = $this->Airlines->all();
             
             // find the data in the array that has id of owl
             foreach ($this->data['airlines'] as $key => $record) {
-		if ($record['id'] == 'owl') {
+                if ($record->id == 'owl') {
                     $owl = $record;
                 }
             }
             
-            // find the data in the array that has id of YSN
-            foreach($this->data['airports'] as $key => $value) {
-                if ($value['id'] == $owl['base']) {
-                    $base = $value;
-                }
-                
-                if ($value['id'] == $owl['dest1']) {
-                    $dest1 = $value;
-                }
-                
-                if ($value['id'] == $owl['dest2']) {
-                    $dest2 = $value;
-                }
-                
-                if ($value['id'] == $owl['dest3']) {
-                    $dest3 = $value;
-                }
-            }
-            
             $this->data['pagebody'] = 'homepage';
-            $this->data['baseAirport'] = $base['airport'];
-            $this->data['dest1Airport'] = $dest1['airport'];
-            $this->data['dest2Airport'] = $dest2['airport'];
-            $this->data['dest3Airport'] = $dest3['airport'];
-            $this->data['airplaneCount'] = $result;
-            $this->data['airlineCount'] = $result2;
+            $this->data['baseAirport'] = $owl->base;
+            $this->data['dest1Airport'] = $owl->dest1;
+            $this->data['dest2Airport'] = $owl->dest2;
+            $this->data['dest3Airport'] = $owl->dest3;
+            $this->data['airplaneCount'] = count($this->Airplanes->all());
+            $this->data['airlineCount'] = count($this->Airlines->all());
             $this->data['pagetitle'] = 'Owl Airline';
             $this->render();
                 
