@@ -1,9 +1,9 @@
-﻿"id","manufacturer","model","price","seats","reach","cruise","takeoff","hourly"
-"avanti","Piaggo","Avanti II","7195","8","2797","589","994","977"
-"baron","Beechcraft","Baron","1350","4","1948","373","701","340"
-"caravan","Cessna","Grand Caravan EX","2300","14","1689","340","660","389"
-"citation","Cessna","Citation M2","3200","7","1550","748","978","1122"
-"kingair","Beechcraft","King Air C90","3900","12","2446","500","1402","990"
-"mustang","Cessna","Citation Mustang","2770","4","2130","630","950","1015"
-"pc12ng","Pilatus","PC-12 NG","3300","9","4147","500","450","727"
-"phenom100","Embraer","Phenom 100","2980","4","2148","704","1036","926"
+id,manufacturer,model,price,seats,reach,cruise,takeoff,hourly
+avanti,Piaggo,"Avanti II",7195,8,2797,589,994,976
+baron,Beechcraft,Baron,1350,4,1948,373,701,340
+caravan,Cessna,"Grand Caravan EX",2300,14,1689,340,660,389
+citation,Cessna,"Citation M2",3200,7,1550,748,978,1122
+kingair,Beechcraft,"King Air C90",3900,12,2446,500,1402,990
+mustang,Cessna,"Citation Mustang",2770,4,2130,630,950,1015
+pc12ng,Pilatus,"PC-12 NG",3300,9,4147,500,450,727,"Update the Fleet"
+phenom100,Embraer,"Phenom 100",2980,4,2148,704,1036,926

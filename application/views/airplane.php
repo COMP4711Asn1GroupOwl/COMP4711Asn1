@@ -3,7 +3,7 @@
     {airplanes}
 	<div class="span4">
 		<h2>
-            <a href="/info/Fleet/show/{id}">{model}</a>
+            <a href="/info/Fleet/show/{id}">{id}</a>
 		</h2>
 	</div>
     {/airplanes}
