@@ -8,12 +8,13 @@ class Booking extends Application
 
     public function index() 
     {
-        $this->load->model('Flights');
-        $this->data = $this->Flights->all();
+        $this->data['airports'] = $this->Airports->all();
+        $this->data['airplanes'] = $this->Airplanes->all();
+        $this->data['airlines'] = $this->Airlines->all();
 
         // populate lists options
         foreach ($this->data['airports'] as $key => $record)
-            $this->data['options'][] = array('name' => $record['airport'], 'key' => $key);
+            $this->data['options'][] = array('name' => $record->airport, 'key' => $key);
 
         sort($this->data['options']);
 
@@ -33,9 +34,9 @@ class Booking extends Application
                 $this->data['base']      = getAirport($from, $this->data);
                 $this->data['target']    = getAirport($to, $this->data);
                 $this->data['results'][] = array(
-                    '1'    => getAirport($record['dest1'], $this->data),
-                    '2'    => $record['dest2'] == $to || $record['dest3'] == $to ? getAirport($record['dest2'], $this->data) : '',
-                    '3'    => $record['dest3'] == $to ? getAirport($record['dest3'], $this->data) : ''
+                    '1'    => getAirport($record->dest1, $this->data),
+                    '2'    => $record->dest2 == $to || $record->dest3 == $to ? getAirport($record->dest2, $this->data) : '',
+                    '3'    => $record->dest3 == $to ? getAirport($record->dest3, $this->data) : ''
                 );
             }
             
@@ -47,14 +48,14 @@ class Booking extends Application
 
 function match($from, $to, $record)
 {           
-    return $record['base'] == $from
+    return $record->base == $from
             
-    && ($record['dest1'] == $to || $record['dest2'] == $to || $record['dest3'] == $to);   
+    && ($record->dest1 == $to || $record->dest2 == $to || $record->dest3 == $to);   
 }
 
 function getAirport($key, $source)
 {
-    return $source['airports'][$key]['airport'];
+    return $source['airports'][$key]->airport;
 }
 
 ?>	

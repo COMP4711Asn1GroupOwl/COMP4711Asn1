@@ -309,7 +309,7 @@ class CI_Session {
 		isset($params['save_path']) OR $params['save_path'] = config_item('sess_save_path');
 
 		$this->_config = $params;
-
+        
 		// Security is king
 		ini_set('session.use_trans_sid', 0);
 		ini_set('session.use_strict_mode', 1);

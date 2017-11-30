@@ -1,6 +1,6 @@
 <div class="row">
 	<div>
-        <form role="form" action="/info/fleet/submit" method="post">
+        <form role="form" action="/info/FleetController/submit" method="post">
             {fmodel}
             {fmanufacturer}
             {fseats}
@@ -10,8 +10,8 @@
             {fhourly}
             {zsubmit}
         </form>
-        <a href="/info/fleet/cancel"><input type="button" value="Cancel"/></a>
-        <a href="/info/fleet/delete"><input type="button" value="Delete"/></a>
+        <a href="/info/FleetController"><input type="button" value="Cancel"/></a>
+        <a href="/info/FleetController/delete/{key}"><input type="button" value="Delete"/></a>
     </div>
     <br/>
 </div>
