@@ -4,12 +4,12 @@
             <h3>
                 Model {model} 
             </h3>
-            <p>Manufacturer {manufacturer} </p>
-            <p>Seats: {seats} </p>
-            <p>Reach: {reach} </p>
-            <p>Cruise: {cruise} </p>
-            <p>Takeoff: {takeoff} </p>
-            <p>Hourly: {hourly} </p>
+            <p>Manufacturer: <b>{manufacturer}</b> </p>
+            <p>Seats: <b>{seats}</b> </p>
+            <p>Reach: <b>{reach}</b> </p>
+            <p>Cruise: <b>{cruise}</b> </p>
+            <p>Takeoff: <b>{takeoff}</b> </p>
+            <p>Hourly: <b>{hourly}</b> </p>
 	</div>
     <br/>
 </div>

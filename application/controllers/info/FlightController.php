@@ -46,6 +46,7 @@ class FlightController extends Application {
 			$this->data = array_merge($this->data, (array) $flight);
 		}
 	    
+	    $this->data['key'] = $flight->id;
 		$this->data['pagetitle'] = 'Flight';
 
 		$this->render();
@@ -61,13 +62,6 @@ class FlightController extends Application {
 	    $flight = (object) $flight;  // convert back to object
 	    $this->session->set_userdata('flight', (object) $flight);
 
-	    // validate away
-	    // var_dump($this->form_validation->run());
-
-	    // $this->Flights->update($flight);
-
-	    // var_dump($this->form_validation->run());
-	    // var_dump(validation_errors());
 	    if ($this->form_validation->run())
 	    {
 	        $this->Flights->update($flight);
@@ -85,6 +79,11 @@ class FlightController extends Application {
 	private function alert($message) {
 	    $this->load->helper('html');        
 	    $this->data['error'] = heading($message,3);
+	}
+
+	public function delete($key) {
+		$this->Flights->delete($key);
+		redirect('info/FlightController');
 	}
 }
 ?>	

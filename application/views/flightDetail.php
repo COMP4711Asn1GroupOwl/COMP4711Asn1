@@ -4,12 +4,12 @@
             <h3>
                 Airplane {id} 
             </h3>
-            <p>Airline: {Airline} </p>
-            <p>To: {To} </p>
-            <p>Time to Board: {TimeToBoard} </p>
-            <p>Terminal: {Terminal} </p>
-            <p>Community: {Community} </p>
-            <p>Time to Arrive: {TimeToArrive} </p>
+            <p>Airline: <b>{airline}</b> </p>
+            <p>To: <b>{to}</b> </p>
+            <p>Time to Board: <b>{timeToBoard}</b> </p>
+            <p>Terminal: <b>{terminal}</b> </p>
+            <p>Community: <b>{community}</b> </p>
+            <p>Time to Arrive: <b>{timeToArrive}</b> </p>
 	</div>
     <br/>
 </div>

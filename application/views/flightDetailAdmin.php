@@ -17,7 +17,7 @@
             {zsubmit}
         </form>
         <a href="/info/FlightController"><input type="button" value="Cancel"/></a>
-        <a href="/info/FlightController"><input type="button" value="Delete"/></a>
+        <a href="/info/FlightController/delete/{key}"><input type="button" value="Delete"/></a>
 	</div>
     <br/>
 </div>

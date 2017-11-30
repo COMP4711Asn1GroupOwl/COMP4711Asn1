@@ -1,12 +1,12 @@
 <?php 
 
-class Fleet extends Application {	
+class FleetController extends Application {	
 	function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->data['airplanes'] = $this->Airplanes->all();
+        $this->data['airplanes'] = $this->Fleets->all();
 		
 		$this->data['pagebody'] = 'airplane';
 		$this->data['pagetitle'] = 'Fleet';
@@ -38,6 +38,7 @@ class Fleet extends Application {
 		    );
 
 		    $this->data = array_merge($this->data, $fields);
+		    $this->data['key'] = $fleet->id;
 
 		} else {
 			$this->data['pagebody'] = 'fleet';
@@ -79,5 +80,11 @@ class Fleet extends Application {
 	    $this->load->helper('html');        
 	    $this->data['error'] = heading($message,3);
 	}
+
+	public function delete($key) {
+		$this->Fleets->delete($key);
+		redirect('info/Fleet');
+	}
+
 }
 ?>
