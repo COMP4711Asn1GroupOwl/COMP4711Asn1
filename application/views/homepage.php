@@ -1,11 +1,11 @@
 <div class="row-fluid">
-    <a class="quick-button metro blue span4" href="/info/fleet/">
+    <a class="quick-button metro blue span4" href="/info/FleetController/">
         <i class="icon-plane"></i>
         <p class="centerText">Number of Airplanes</p>
         <span class="badge fontSize">{airplaneCount}</span>
     </a>
 
-    <a class="quick-button metro green span4" href="/info/flight/">
+    <a class="quick-button metro green span4" href="/info/FlightController/">
         <i class="icon-fighter-jet"></i>
         <p class="centerText">Number of Airlines</p>
         <span class="badge fontSize">{airlineCount}</span>
