@@ -72,7 +72,7 @@ class FleetController extends Application {
 	        $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
 	    }
 	    $key = $fleet->id;
-	    redirect('/info/Fleet');
+	    redirect('/info/FleetController');
 	}
 
 	// Build a suitable error mesage
@@ -83,7 +83,7 @@ class FleetController extends Application {
 
 	public function delete($key) {
 		$this->Fleets->delete($key);
-		redirect('info/Fleet');
+		redirect('info/FleetController');
 	}
 
 }
